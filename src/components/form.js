@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 
 const InputForm =({addComments})=>{
-    const {userInput,setUserInput} = useState('');
+    const [userInput,userName,setUserInput] = useState('');
 
     const handleChange = (ev) =>{
         setUserInput(ev.currentTarget.value);
@@ -11,6 +11,7 @@ const InputForm =({addComments})=>{
     const handleSubmit = (ev) =>{
         ev.preventDefault();
         addComments(userInput);
+        setUserInput('')
     }
 
     const handleKeyPress = (ev) =>{
@@ -24,6 +25,13 @@ const InputForm =({addComments})=>{
                 className="fixed-container"
                 onSubmit={handleSubmit}
             >
+                <input 
+                    className ="user-name_input"
+                    value={userName}
+                    type="text"
+                    onChange={handleChange}
+                    placeholder="ваше имя"
+                />
                 <input
                     className ="comment"
                     value={userInput}

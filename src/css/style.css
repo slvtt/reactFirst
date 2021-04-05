@@ -51,7 +51,9 @@ body {
     background-color:#30bae7;
     font-size: 16px;
 }
-
+.user-name_input{
+    height: 30px;
+}
 .btn_submit{
     display: block;
     text-align: center;
@@ -61,4 +63,14 @@ body {
     border-radius:10px;
     border:none;
     background-color:#17c2a4;
+}
+
+.item-comment{
+    padding:20px 30px;
+    border-radius:20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content:space-between;
+    width:360px;
+    background-color:#87509c;
 }
