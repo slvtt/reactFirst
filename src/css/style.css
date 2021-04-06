@@ -1,3 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    font-family: 'Roboto';
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-weight: 400;
+    min-width: 320px;
+    min-height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    opacity: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+nav,
+li,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+article {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+li {
+    list-style: none;
+}
+
+main {
+    background-color: #fbfbfb;
+}
+
+footer {
+    background-color: white;
+}
 @font-face {
     font-family: "Montserrat";
     src: url('../fonts/Montserrat-Regular.woff2');
@@ -9,9 +88,12 @@
     src: url('../fonts/Montserrat-Bold.woff2');
     font-weight: 600;
 }
-input,button{
-    outline:none;
+
+input,
+button {
+    outline: none;
 }
+
 body {
     font-family: "Montserrat", sans-serif;
     background-color: #3c5499;
@@ -29,48 +111,81 @@ body {
     align-items: center;
 }
 
-.info_subTitle{
+.info_subTitle {
     font-size: 24px;
 }
 
-.info-block{
+.info-block {
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    line-height: 1.5;
+    margin: 0 0 24px 0;
 }
 
-.comment{
+
+.comment {
     font-family: "Montserrat";
-    width:300px;
+    width: 300px;
     color: #fff;
     text-align: center;
-    border:none;
+    border: none;
     height: 100px;
     border-radius: 10px;
-    background-color:#30bae7;
+    background-color: #30bae7;
     font-size: 16px;
 }
-.user-name_input{
-    height: 30px;
+
+.flex-row {
+    display: flex;
+    flex-direction: column;
 }
-.btn_submit{
+
+.user-name_input {
+    height: 30px;
+    max-width: 300px;
+    border-radius: 10px;
+    border: none;
+    background-color:#607fd9;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.user-name_input::placeholder{
+    color: #fff;
+}
+
+.btn_submit {
     display: block;
     text-align: center;
     margin-top: 20px;
-    width:150px;
+    width: 150px;
     height: 55px;
-    border-radius:10px;
-    border:none;
-    background-color:#17c2a4;
+    border-radius: 10px;
+    border: none;
+    background-color: #17c2a4;
 }
 
-.item-comment{
-    padding:20px 30px;
-    border-radius:20px;
+.item-comment {
+    padding: 20px 30px;
+    border-radius: 20px;
     margin-bottom: 20px;
     display: flex;
-    justify-content:space-between;
-    width:360px;
-    background-color:#87509c;
+    align-items: center;
+    justify-content: space-between;
+    width: 360px;
+    background-color: #d74680;
+}
+
+.item-delete {
+    background-color: #ffdd99;
+    height: 20px;
+    width: 30px;
+    border: none;
+    border-radius: 5px
+}
+
+.userName_span{
+    margin-right: 15px;
 }

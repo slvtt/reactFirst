@@ -2,16 +2,22 @@ import React from 'react';
 import {useState} from 'react';
 
 const InputForm =({addComments})=>{
-    const [userInput,userName,setUserInput] = useState('');
+    const [userInput,setUserInput] = useState('');
+    const [userName,setUserNameInput] = useState('');
 
-    const handleChange = (ev) =>{
+    const handleChangeUserInput = (ev) => {
+        setUserNameInput(ev.currentTarget.value);
+    }
+
+    const handleChangeComment = (ev) =>{
         setUserInput(ev.currentTarget.value);
     }
 
     const handleSubmit = (ev) =>{
         ev.preventDefault();
-        addComments(userInput);
-        setUserInput('')
+        addComments(userInput,userName);
+        setUserInput('');
+        setUserNameInput('');
     }
 
     const handleKeyPress = (ev) =>{
@@ -29,14 +35,14 @@ const InputForm =({addComments})=>{
                     className ="user-name_input"
                     value={userName}
                     type="text"
-                    onChange={handleChange}
+                    onChange={handleChangeUserInput}
                     placeholder="ваше имя"
                 />
                 <input
                     className ="comment"
                     value={userInput}
                     type="text"
-                    onChange={handleChange}
+                    onChange={handleChangeComment}
                     onKeyDown={handleKeyPress}
                     placeholder="Ваш комментарий"
                 />
