@@ -10,12 +10,21 @@ function App(){
 
     const addComments = (userInput,userInputName) =>{
         if(userInput){
+            const NewDate = new Date();
+            const hour = NewDate.getHours();
+            const minute = NewDate.getMinutes();
+            const date = NewDate.getDate();
             const newItem = {
                 id:Math.random().toString(36).substr(2,9),
                 comment:userInput,
-                name:userInputName
+                name:userInputName,
+                fullDate:{
+                    hour:hour,
+                    minute:minute,
+                    date:date
+                }
             }
-            console.log(userInputName)
+
             setComments([...comments,newItem])
             setName([...userName,newItem])
         }
@@ -31,13 +40,6 @@ function App(){
 
     }
 
-    const getDate = ()=>{
-        const data = new Date(),
-            hour = data.getHours(),
-            minuts = data.getMinutes(),
-            date = data.getDate();
-        
-    }
 
     return(
         <div className="fixed-container">
@@ -47,7 +49,6 @@ function App(){
             {comments.map((comment,userName) => {
                 return(
                     <Comments
-                    date ={getDate}
                         userName={userName}
                         comment={comment}
                         key={comment.id}
