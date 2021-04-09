@@ -1,6 +1,9 @@
 import React from 'react';
 
-const Comments = ({userName,comment,removeComments,getDate})=>{
+const Comments = ({comment,removeComments},)=>{
+
+    const hour = comment.fullDate.hour;
+    const minute = comment.fullDate.minute;
 
     return(
         <div key ={comment.id} className ="item-comment">
@@ -9,6 +12,7 @@ const Comments = ({userName,comment,removeComments,getDate})=>{
                 <div className="userName">
                     <span className="userName_span">Имя:</span>
                     {comment.name}
+                    <div>Время написания: {hour}: {minute} </div>
                 </div>
 
                 <p className="comment-text">

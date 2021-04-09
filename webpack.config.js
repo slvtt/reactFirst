@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const mode = process.env.NODE_ENV;
 const isDev = mode === 'development';
@@ -25,12 +26,25 @@ let conf = {
                 collapseWhitespace: !isDev
             }
         }),
+        new MiniCssExtractPlugin({
+            filename: `./css/${filename('css')}`
+        }),
         new CleanWebpackPlugin()
     ],
     module: {
-        rules: [{
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+        rules: [
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: '../'
+                        }
+                    },
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.js$/,
