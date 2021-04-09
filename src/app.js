@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import Info from './components/info';
 import InputForm from './components/form';
 import Comments from './components/comments'
@@ -7,8 +7,17 @@ import Comments from './components/comments'
 function App(){
     const [comments,setComments] = useState([]);
 
+    useEffect(()=>{
+        const raw = localStorage.getItem('comments') || [];
+        setComments(JSON.parse(raw));
+    },[])
+
+    useEffect(() =>{
+        localStorage.setItem('comments',JSON.stringify(comments));
+    },[comments])
+
     const addComments = (userInput,userInputName) =>{
-        if(userInput){
+        if(userInput && userInputName){
             const NewDate = new Date();
             const hour = NewDate.getHours();
             const minute = NewDate.getMinutes();
@@ -26,6 +35,9 @@ function App(){
             }
 
             setComments([...comments,newItem])
+        } 
+        else{
+            alert('Заполните,пожалуйста, все поля!')
         }
 
     }
@@ -37,13 +49,10 @@ function App(){
                 [2, 0, 1, 1, 1, 2][(number % 10 < 5) ? number % 10 : 5]];
     }
 
-    const removeComments = () =>{
-        
-    }
-
-    const handleComment = () =>{
-
-
+    const removeComments = (id) =>{
+        setComments(comments.filter(comment => {
+            return comment.id != id
+        }))
     }
 
     return(
@@ -59,7 +68,6 @@ function App(){
                             userName={userName}
                             comment={comment}
                             key={comment.id}
-                            toggleComment={handleComment}
                             removeComments={removeComments}
                         />
                         </li>
