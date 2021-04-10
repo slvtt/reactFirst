@@ -10,12 +10,15 @@ function App(){
 
     useEffect(()=>{
         const raw = localStorage.getItem('comments') || [];
-        setComments(JSON.parse(raw));
+        if(raw){
+            setComments(JSON.parse(raw));
+        }
+
     },[])
 
-    useEffect(() =>{
+    React.useEffect(() =>{
         localStorage.setItem('comments',JSON.stringify(comments));
-    },[comments])
+    })
 
     const addComments = (userInput,userInputName) =>{
         if(userInput && userInputName){
