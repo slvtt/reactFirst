@@ -7,14 +7,16 @@ import Comments from './components/comments'
 function App(){
     const [comments,setComments] = useState([]);
 
+    useEffect(() =>{
+        localStorage.setItem('comments',JSON.stringify(comments));
+    },[comments])
+
     useEffect(()=>{
         const raw = localStorage.getItem('comments') || [];
         setComments(JSON.parse(raw));
     },[])
 
-    useEffect(() =>{
-        localStorage.setItem('comments',JSON.stringify(comments));
-    },[comments])
+
 
     const addComments = (userInput,userInputName) =>{
         if(userInput && userInputName){
