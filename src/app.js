@@ -9,7 +9,8 @@ function App(){
 
 
     useEffect(()=>{
-        const raw = localStorage.getItem('comments') || [];
+        const raw = localStorage.getItem('comments');
+        
         if(raw){
             setComments(JSON.parse(raw));
         }
